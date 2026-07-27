@@ -261,18 +261,36 @@ A `<ul class="dated">` row looks like this — `detail` is optional:
 </li>
 ```
 
+## Hidden sections
+
+Four blocks are commented out in `index.html` rather than deleted:
+
+- Preprints and technical reports
+- In preparation
+- Selected results
+- Other experience (ICASSP 2024 demo, industry internships)
+
+Each is wrapped in a clearly labelled `<!-- HIDDEN … -->` comment that tells
+you how to restore it. Restoring is two steps: delete the comment opener and
+its matching closer, then re-add the nav link in `<ul>` inside `<nav>` if the
+section should appear in the navigation.
+
+Two consequences worth knowing. Commented-out markup still ships to the
+browser — it is invisible and unindexed, but anyone reading View Source can
+see it, so do not hide anything there that is actually confidential. And the
+CSS for those sections (`.results`, `.status-report`) is still in
+`style.css`, deliberately, so the sections render correctly when restored.
+
 ## Still to fill in
 
-Search `index.html` for `UNCONFIRMED` — each one is an HTML comment sitting
-exactly where the edit goes. As of the last update:
+- **`github.com/itsjunwei/MAGENTA` returns 404.** There is a `BROKEN LINK`
+  comment on that entry. Create the repo or delete the `code` link before
+  you launch — it is the only known broken link on the site.
+- **MAGENTA has no DOI yet.** It is marked `[TO UPDATE]` in the file. When
+  the DOI is issued: delete the status label, link the title, update the
+  venue line, and add a `citation_*` block in `<head>`.
 
-- APSIPA ASC 2025 DOI (comment in `<head>` and on the entry)
-- IEEE Sensors Journal DOI (comment in `<head>` and on the entry)
-- WINTER status — currently rendered as "under review"
-
-There is also a `BROKEN LINK` comment on the MAGENTA entry:
-`github.com/itsjunwei/MAGENTA` returns 404. Create the repo or delete the
-`code` link before you launch.
+No `UNCONFIRMED` markers remain.
 
 ## Before you push — a 60-second check
 
