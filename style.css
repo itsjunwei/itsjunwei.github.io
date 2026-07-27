@@ -206,7 +206,8 @@ p { margin: 0 0 1rem; }
   font-size: 0.9375rem;
 }
 
-.thesis { color: var(--fg-muted); }
+.thesis,
+.demo { color: var(--fg-muted); }
 
 /* --------------------------------------------------------------------------
    Publications
