@@ -24,39 +24,42 @@ This is a **user site**, so the repository name must be exactly
 `itsjunwei.github.io` and Pages serves from the root of the default branch.
 No `/docs` folder, no `gh-pages` branch.
 
-### 1. Create the repository
+**The local repository is already set up.** `git init`, the first commit, and
+the `origin` remote are done. Only steps 1 and 2 below remain, and both need
+your GitHub account.
 
-On GitHub, create a new **public** repository named exactly:
+### 1. Create the repository on GitHub
+
+Go to <https://github.com/new> and create a **public** repository named
+exactly:
 
 ```
 itsjunwei.github.io
 ```
 
-Do not add a README, `.gitignore`, or licence from the creation screen —
-this directory already has the files.
+Leave "Add a README", `.gitignore`, and licence **unticked** — this
+directory already has the files, and an extra initial commit on GitHub's
+side would force you to merge before you can push.
 
-### 2. Push this directory to the default branch
+### 2. Push
 
 From inside this folder:
 
 ```bash
-git init -b main
-```
-
-```bash
-git add .
-```
-
-```bash
-git commit -m "Initial site"
-```
-
-```bash
-git remote add origin https://github.com/itsjunwei/itsjunwei.github.io.git
-```
-
-```bash
 git push -u origin main
+```
+
+Git will prompt for your GitHub credentials the first time. Use a **personal
+access token**, not your account password — GitHub stopped accepting
+passwords for Git operations in 2021. Create one at
+<https://github.com/settings/tokens> with the `repo` scope, then paste it
+when prompted for the password. Windows will store it in Credential Manager
+so you are asked only once.
+
+If the remote ever needs changing:
+
+```bash
+git remote set-url origin https://github.com/itsjunwei/itsjunwei.github.io.git
 ```
 
 ### 3. Enable Pages
@@ -138,3 +141,149 @@ python -m http.server 8000
 Then open <http://localhost:8000/>. Opening `index.html` straight from the
 filesystem also works, but a server is closer to production and lets
 Lighthouse run properly.
+
+Python is not currently installed on this machine. If you don't want to
+install it, any of these work too — or just double-click `index.html`.
+
+---
+
+# Updating the site
+
+Everything lives in `index.html`. You will not need to touch `style.css`
+unless you want to change how something *looks*.
+
+The publish loop is always the same three commands:
+
+```bash
+git add .
+```
+
+```bash
+git commit -m "Add IEEE SPL paper"
+```
+
+```bash
+git push
+```
+
+GitHub Pages rebuilds within about a minute. Hard-refresh with
+**Ctrl+Shift+R** if you still see the old version.
+
+## Adding a publication
+
+Find the right `<ol class="pubs">` — there are three, one per section
+(`Journal and conference papers`, `Preprints and technical reports`,
+`In preparation`). Copy an existing `<li>` and edit it. Entries run
+reverse chronologically, newest first, and the `[n]` numbers are generated
+by CSS — you never type them and they renumber themselves.
+
+The full shape of an entry:
+
+```html
+<li>
+  <p class="title"><a href="https://doi.org/10.xxxx/yyyy">Paper Title Here</a></p>
+  <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Woon-Seng Gan</p>
+  <p class="venue">Journal Name, vol. 1, no. 2, pp. 3–4, 2026.</p>
+  <p class="links"><a href="https://arxiv.org/abs/XXXX.XXXXX">arXiv:XXXX.XXXXX</a> · <a href="https://github.com/itsjunwei/REPO">code</a></p>
+</li>
+```
+
+Rules that keep the list honest:
+
+- `<strong>` goes around **your name only**. That is what bolds it.
+- Link the title to the DOI **only once the paper is actually published**.
+  No DOI yet? Leave the title as plain text inside `<p class="title">`.
+- Anything not yet published needs a visible status label, placed inside
+  the `<p class="title">` right after the title text:
+
+  ```html
+  <span class="status status-pending">Under review</span>
+  ```
+
+  Use `status-pending` for under review / accepted / in preparation, and
+  `status-report` for preprints and technical reports. The only difference
+  is emphasis.
+- Drop the `<p class="links">` line entirely if there is nothing to link.
+- Use `–` (en dash) for page and year ranges, not a hyphen.
+
+## When a paper gets published
+
+Four edits, in this order:
+
+1. **Delete the `<span class="status">…</span>`** from the title line.
+2. **Wrap the title in the DOI link**, as in the template above.
+3. **Update `<p class="venue">`** with the real volume, issue, pages, year.
+4. **Add a citation block in `<head>`** so Google Scholar indexes it.
+
+Step 4 is the one that is easy to forget. Copy an existing block and edit.
+For a journal paper:
+
+```html
+<!-- Journal Name 2026 -->
+<meta name="citation_title" content="Paper Title Here">
+<meta name="citation_author" content="Yeow, Jun-Wei">
+<meta name="citation_author" content="Tan, Ee-Leng">
+<meta name="citation_journal_title" content="Journal Name">
+<meta name="citation_volume" content="1">
+<meta name="citation_issue" content="2">
+<meta name="citation_firstpage" content="3">
+<meta name="citation_lastpage" content="4">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_doi" content="10.xxxx/yyyy">
+```
+
+For a conference paper, swap `citation_journal_title` for
+`citation_conference_title` and drop volume/issue.
+
+**Only add these blocks for genuinely published papers.** Authors go
+`Family, Given`, one tag each, in author order. If you add a block for a
+preprint or an accepted-but-unpublished paper, Scholar will index it as
+published — which is exactly the confusion the status labels exist to
+prevent.
+
+## Other common edits
+
+| To change | Where in `index.html` |
+| --- | --- |
+| Contact links | `<ul class="contact">` near the top |
+| Research summary or thesis title | `<section id="research">` |
+| Selected results | `<ul class="results">` |
+| Teaching, education, experience | the matching `<section>`, in `<ul class="dated">` |
+| Page title / search snippet | `<title>` and `<meta name="description">` in `<head>` |
+
+A `<ul class="dated">` row looks like this — `detail` is optional:
+
+```html
+<li>
+  <span class="what">Role or qualification</span>
+  <span class="when">Aug 2023 – present</span>
+  <span class="detail">Anything extra.</span>
+</li>
+```
+
+## Still to fill in
+
+Search `index.html` for `UNCONFIRMED` — each one is an HTML comment sitting
+exactly where the edit goes. As of the last update:
+
+- APSIPA ASC 2025 DOI (comment in `<head>` and on the entry)
+- IEEE Sensors Journal DOI (comment in `<head>` and on the entry)
+- WINTER status — currently rendered as "under review"
+
+There is also a `BROKEN LINK` comment on the MAGENTA entry:
+`github.com/itsjunwei/MAGENTA` returns 404. Create the repo or delete the
+`code` link before you launch.
+
+## Before you push — a 60-second check
+
+1. Open <http://localhost:8000/> and read the section you changed.
+2. **Ctrl+P** and look at the print preview. It should be black on white
+   with no navigation bar. This is your CV; it is easy to break and easy to
+   forget to look at.
+3. Paste the file into <https://validator.w3.org/nu/> (the "Upload" tab).
+   It should say zero errors. An unclosed tag can silently swallow the rest
+   of the page.
+4. Update `<lastmod>` in `sitemap.xml` to today's date.
+
+If you add a new page later, add a matching `<url>` block to `sitemap.xml`.
+A single-page site needs nothing else.
