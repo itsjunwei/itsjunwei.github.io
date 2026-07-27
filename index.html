@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Yeow Jun Wei — 3-D Sound Event Localization and Detection</title>
+<meta name="description" content="Yeow Jun Wei (Jun-Wei Yeow) is a PhD candidate at Nanyang Technological University working on 3-D sound event localization and detection: robustness, geometric target formulations, and lightweight models.">
+<link rel="canonical" href="https://itsjunwei.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Yeow Jun Wei — 3-D Sound Event Localization and Detection">
+<meta property="og:description" content="PhD candidate at Nanyang Technological University working on 3-D sound event localization and detection: robustness, geometric target formulations, and lightweight models.">
+<meta property="og:url" content="https://itsjunwei.github.io/">
+<meta property="og:locale" content="en_SG">
+<meta property="profile:first_name" content="Jun-Wei">
+<meta property="profile:last_name" content="Yeow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yeow Jun Wei — 3-D Sound Event Localization and Detection">
+<meta name="twitter:description" content="PhD candidate at Nanyang Technological University working on 3-D sound event localization and detection.">
+
+<!--
+  ============================================================================
+  Google Scholar (Highwire Press) citation metadata.
+  One block per PUBLISHED journal or conference paper only.
+  Papers that are accepted-in-press, under review, preprints, technical
+  reports, or in preparation are deliberately NOT listed here.
+  ============================================================================
+-->
+
+<!-- npj Acoustics 2025 -->
+<meta name="citation_title" content="Environmental Acoustic Intelligence through Sound Event Localization and Detection: A Review">
+<meta name="citation_author" content="Yeow, Jun-Wei">
+<meta name="citation_author" content="Tan, Ee-Leng">
+<meta name="citation_author" content="Peksi, Santi">
+<meta name="citation_author" content="Gan, Woon-Seng">
+<meta name="citation_journal_title" content="npj Acoustics">
+<meta name="citation_volume" content="1">
+<meta name="citation_issue" content="1">
+<meta name="citation_firstpage" content="31">
+<meta name="citation_publication_date" content="2025">
+<meta name="citation_doi" content="10.1038/s44384-025-00036-3">
+
+<!-- APSIPA ASC 2025 -->
+<meta name="citation_title" content="Towards Robust Stereo 3-D SELD: A Study of Perceptual Features and Data Augmentation">
+<meta name="citation_author" content="Yeow, Jun-Wei">
+<meta name="citation_author" content="Tan, Ee-Leng">
+<meta name="citation_author" content="Peksi, Santi">
+<meta name="citation_author" content="Gan, Woon-Seng">
+<meta name="citation_author" content="Huang, Qirui">
+<meta name="citation_conference_title" content="APSIPA Annual Summit and Conference (APSIPA ASC)">
+<meta name="citation_firstpage" content="95">
+<meta name="citation_lastpage" content="100">
+<meta name="citation_publication_date" content="2025">
+<!-- [UNCONFIRMED] APSIPA ASC 2025 DOI. When known, add:
+     <meta name="citation_doi" content="10.XXXXX/XXXXXXX"> -->
+
+<!-- IEEE Sensors Journal 2025 -->
+<meta name="citation_title" content="Enhancing 3-D Sound Event Localization and Detection with Distance Estimation using Reverberation and Spatial Coherence Features">
+<meta name="citation_author" content="Yeow, Jun-Wei">
+<meta name="citation_author" content="Tan, Ee-Leng">
+<meta name="citation_author" content="Bai, Jisheng">
+<meta name="citation_author" content="Peksi, Santi">
+<meta name="citation_author" content="Gan, Woon-Seng">
+<meta name="citation_journal_title" content="IEEE Sensors Journal">
+<meta name="citation_volume" content="25">
+<meta name="citation_issue" content="15">
+<meta name="citation_firstpage" content="29221">
+<meta name="citation_lastpage" content="29237">
+<meta name="citation_publication_date" content="2025">
+<!-- [UNCONFIRMED] IEEE Sensors Journal DOI. When known, add:
+     <meta name="citation_doi" content="10.1109/JSEN.XXXX.XXXXXXX"> -->
+
+<!-- AES International Conference on Headphone Technology 2025 -->
+<meta name="citation_title" content="Enhancing Situational Awareness in Wearable Audio Devices Using a Lightweight Sound Event Localization and Detection System">
+<meta name="citation_author" content="Yeow, Jun-Wei">
+<meta name="citation_author" content="Tan, Ee-Leng">
+<meta name="citation_author" content="Peksi, Santi">
+<meta name="citation_author" content="Ong, Zhen-Ting">
+<meta name="citation_author" content="Gan, Woon-Seng">
+<meta name="citation_conference_title" content="AES International Conference on Headphone Technology">
+<meta name="citation_publication_date" content="2025">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jun-Wei Yeow",
+  "alternateName": "Yeow Jun Wei",
+  "givenName": "Jun-Wei",
+  "familyName": "Yeow",
+  "jobTitle": "PhD Candidate",
+  "email": "mailto:junwei004@e.ntu.edu.sg",
+  "url": "https://itsjunwei.github.io/",
+  "description": "PhD candidate working on 3-D sound event localization and detection.",
+  "knowsAbout": [
+    "Sound event localization and detection",
+    "Long-tailed learning",
+    "Lightweight neural networks",
+    "Label-efficient training"
+  ],
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Nanyang Technological University",
+    "department": {
+      "@type": "Organization",
+      "name": "School of Electrical and Electronic Engineering"
+    },
+    "url": "https://www.ntu.edu.sg/"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Nanyang Technological University",
+    "url": "https://www.ntu.edu.sg/"
+  },
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "ORCID",
+    "value": "https://orcid.org/0009-0008-9467-4810"
+  },
+  "sameAs": [
+    "https://github.com/itsjunwei",
+    "https://scholar.google.com/citations?user=iQpCWVYAAAAJ",
+    "https://orcid.org/0009-0008-9467-4810"
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="page-header">
+  <h1>Yeow Jun Wei</h1>
+  <p class="standfirst">PhD candidate, School of Electrical and Electronic Engineering, Nanyang Technological University, Singapore. Smart Nation TRANS Lab, supervised by Prof.&nbsp;Gan Woon Seng. Candidature Aug 2023 – May 2027 (expected).</p>
+
+  <ul class="contact">
+    <li>Publishing name: <span class="pubname">Jun-Wei Yeow</span></li>
+    <li><a href="mailto:junwei004@e.ntu.edu.sg">junwei004@e.ntu.edu.sg</a></li>
+    <li><a href="https://github.com/itsjunwei">github.com/itsjunwei</a></li>
+    <li><a href="https://scholar.google.com/citations?user=iQpCWVYAAAAJ">Google Scholar</a></li>
+    <li><a href="https://orcid.org/0009-0008-9467-4810">ORCID 0009-0008-9467-4810</a></li>
+  </ul>
+
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#results">Selected results</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Other experience</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<section id="research">
+  <h2>Research</h2>
+  <p>I work on 3-D sound event localization and detection (SELD): systems that jointly determine what sound events occur, in which direction they occur, and at what distance. Within that, I work on four things: robustness when real-world class distributions are long-tailed, geometric formulations of the regression target, lightweight models for edge and hearable deployment, and label-efficient training.</p>
+  <p class="thesis">Thesis: <em>Advancing Environmental Acoustic Intelligence: Robust, Geometric, and Lightweight Frameworks for 3-D Sound Event Localization and Detection</em></p>
+</section>
+
+<section id="publications">
+  <h2>Publications</h2>
+  <p class="note">Author lists are given in full. My name is in bold. Anything not yet published carries a status label next to the title.</p>
+
+  <h3 id="journal-conference">Journal and conference papers</h3>
+  <ol class="pubs">
+
+    <li>
+      <!-- [TO UPDATE] MAGENTA is accepted / in press; no DOI has been issued yet.
+           When the DOI appears: wrap the title in a link to it, add a
+           citation_* meta block in <head>, and delete the status label. -->
+      <p class="title">MAGENTA: Magnitude and Geometry-Enhanced Training Approach for Long-Tailed Sound Event Localization and Detection <span class="status status-pending">Accepted / in press — not yet published</span></p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Santi Peksi, Woon-Seng Gan</p>
+      <p class="venue">IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2026.</p>
+      <!-- [BROKEN LINK — 2026-07-27] github.com/itsjunwei/MAGENTA returns 404
+           via the GitHub API: the repo is missing, renamed, or still private.
+           Create/publish it before launch, or delete the "code" link below. -->
+      <p class="links"><a href="https://arxiv.org/abs/2509.15599">preprint: arXiv:2509.15599</a> · <a href="https://github.com/itsjunwei/MAGENTA">code</a></p>
+    </li>
+
+    <li>
+      <p class="title"><a href="https://doi.org/10.1038/s44384-025-00036-3">Environmental Acoustic Intelligence through Sound Event Localization and Detection: A Review</a></p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Santi Peksi, Woon-Seng Gan</p>
+      <p class="venue">npj Acoustics, vol. 1, no. 1, article 31, 2025. Open access.</p>
+      <p class="links"><a href="https://doi.org/10.1038/s44384-025-00036-3">doi:10.1038/s44384-025-00036-3</a></p>
+    </li>
+
+    <li>
+      <!-- [UNCONFIRMED] APSIPA ASC 2025 DOI. Once confirmed, wrap the title text
+           in <a href="https://doi.org/..."> and add citation_doi in <head>. -->
+      <p class="title">Towards Robust Stereo 3-D SELD: A Study of Perceptual Features and Data Augmentation</p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Santi Peksi, Woon-Seng Gan, Qirui Huang</p>
+      <p class="venue">APSIPA Annual Summit and Conference (APSIPA ASC), Singapore, 2025, pp. 95–100.</p>
+      <p class="links"><a href="https://github.com/itsjunwei/NTU_SNTL_Task3">code</a></p>
+    </li>
+
+    <li>
+      <!-- [UNCONFIRMED] IEEE Sensors Journal DOI. Once confirmed, wrap the title
+           text in <a href="https://doi.org/..."> and add citation_doi in <head>. -->
+      <p class="title">Enhancing 3-D Sound Event Localization and Detection with Distance Estimation using Reverberation and Spatial Coherence Features</p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Jisheng Bai, Santi Peksi, Woon-Seng Gan</p>
+      <p class="venue">IEEE Sensors Journal, vol. 25, no. 15, pp. 29221–29237, 2025.</p>
+    </li>
+
+    <li>
+      <p class="title">Enhancing Situational Awareness in Wearable Audio Devices Using a Lightweight Sound Event Localization and Detection System</p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Santi Peksi, Zhen-Ting Ong, Woon-Seng Gan</p>
+      <p class="venue">AES International Conference on Headphone Technology, Espoo, Finland, 27–29 August 2025. AES E-Library. <span class="caveat">(Selection was by peer review of the abstract and precis; the full manuscript was not peer reviewed.)</span></p>
+    </li>
+
+    <li>
+      <!-- [UNCONFIRMED] WINTER status: under review or accepted. Rendered as
+           "under review" pending confirmation. If it is accepted, update the
+           status label; once published, add the DOI, link the title, and add a
+           citation_* meta block in <head>. -->
+      <p class="title">WINTER: Wrapped Interval Normalization for Elevation Representation in Stereo 3-D Sound Event Localization and Detection <span class="status status-pending">Under review</span></p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Santi Peksi, Woon-Seng Gan</p>
+      <p class="venue">IEEE Signal Processing Letters.</p>
+      <p class="links"><a href="https://github.com/itsjunwei/WINTER-SELD">code</a></p>
+    </li>
+
+  </ol>
+
+  <h3 id="preprints">Preprints and technical reports</h3>
+  <ol class="pubs">
+
+    <li>
+      <p class="title">Improving Stereo 3D Sound Event Localization and Detection: Perceptual Features, Stereo-Specific Data Augmentation, and Distance Normalization <span class="status status-report">Technical report</span></p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Santi Peksi, Woon-Seng Gan</p>
+      <p class="venue">DCASE2025 Challenge Technical Report, 2025.</p>
+      <p class="links"><a href="https://arxiv.org/abs/2507.00874">arXiv:2507.00874</a></p>
+    </li>
+
+    <li>
+      <p class="title">Real-Time Sound Event Localization and Detection: Deployment Challenges on Edge Devices <span class="status status-report">Preprint</span></p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Jisheng Bai, Santi Peksi, Woon-Seng Gan</p>
+      <p class="venue">2024.</p>
+      <p class="links"><a href="https://arxiv.org/abs/2409.11700">arXiv:2409.11700</a></p>
+    </li>
+
+    <li>
+      <p class="title">Squeeze-and-Excite ResNet-Conformers for Sound Event Localization, Detection, and Distance Estimation <span class="status status-report">Technical report</span></p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Jisheng Bai, Santi Peksi, Woon-Seng Gan</p>
+      <p class="venue">DCASE2024 Challenge Technical Report, 2024.</p>
+    </li>
+
+  </ol>
+
+  <h3 id="in-preparation">In preparation</h3>
+  <ol class="pubs">
+
+    <li>
+      <p class="title">Context-Aware Sensor Fusion: Robust 6DoF Audio Tracking via Sound Scene Analysis <span class="status status-pending">In preparation</span></p>
+      <p class="authors"><strong>Jun-Wei Yeow</strong>, Ee-Leng Tan, Santi Peksi, Woon-Seng Gan</p>
+      <p class="venue">Manuscript.</p>
+      <p class="links"><a href="https://github.com/itsjunwei/SA-MMTM-6DoFSELD">code</a></p>
+    </li>
+
+  </ol>
+</section>
+
+<section id="results">
+  <h2>Selected results</h2>
+  <ul class="results">
+    <li>DCASE 2025 Challenge Task 3 (Stereo 3-D SELD): ranked 6th, with a 4M-parameter system against a 58M-parameter first-place entry.</li>
+    <li>MAGENTA: 20.5% relative reduction in aggregated SELD error on STARSS23.</li>
+    <li>WINTER: 11.7% reduction in far-field distance error on STARSS23.</li>
+    <li>SA-MMTM: 5.69% relative reduction in aggregated SELD error on the 6DoF SELD dataset, at 18.6K additional parameters.</li>
+  </ul>
+</section>
+
+<section id="teaching">
+  <h2>Teaching</h2>
+  <p class="note">All at Nanyang Technological University.</p>
+  <ul class="dated">
+    <li><span class="what">Undergraduate Research Supervisor, EE4080 Final Year Project</span> <span class="when">Aug 2023 – present</span></li>
+    <li><span class="what">Teaching Assistant, IE0005 Introduction to Data Science and Artificial Intelligence</span> <span class="when">Jan – May 2026</span></li>
+    <li><span class="what">Teaching Assistant, IE4727 Web Application Design</span> <span class="when">Aug – Dec 2025</span></li>
+  </ul>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul class="dated">
+    <li>
+      <span class="what">PhD, Electrical and Electronic Engineering, Nanyang Technological University</span>
+      <span class="when">Aug 2023 – May 2027 (expected)</span>
+    </li>
+    <li>
+      <span class="what">BEng (Hons) Electrical and Electronic Engineering, Nanyang Technological University</span>
+      <span class="when">2019 – 2023</span>
+      <span class="detail">First Class Honours, Highest Distinction. CGPA 4.50/5.00. Second major in Business (Investments).</span>
+    </li>
+  </ul>
+</section>
+
+<section id="experience">
+  <h2>Other experience</h2>
+
+  <h3 id="demos">Demonstrations</h3>
+  <ul class="dated">
+    <li><span class="what">Live polyphonic SELD system, presented at ICASSP 2024, Seoul</span> <span class="when">2024</span></li>
+  </ul>
+
+  <h3 id="industry">Industry</h3>
+  <ul class="dated">
+    <li><span class="what">Product Test Engineer Intern, Silicon Labs</span> <span class="when">2022</span></li>
+    <li><span class="what">Data Engineer Intern, Siemens Mobility</span> <span class="when">2021</span></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>Yeow Jun Wei · <a href="mailto:junwei004@e.ntu.edu.sg">junwei004@e.ntu.edu.sg</a> · School of Electrical and Electronic Engineering, Nanyang Technological University, Singapore.</p>
+  <p class="colophon">Static HTML and CSS. No trackers, no third-party requests.</p>
+</footer>
+
+</body>
+</html>

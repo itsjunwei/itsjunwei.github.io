@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Sound radiating from a point source">
+  <style>
+    .mark { fill: none; stroke: #1c1c1a; stroke-width: 2.6; stroke-linecap: round; }
+    .dot  { fill: #1c1c1a; }
+    @media (prefers-color-scheme: dark) {
+      .mark { stroke: #e6e4df; }
+      .dot  { fill: #e6e4df; }
+    }
+  </style>
+  <circle class="dot" cx="9" cy="16" r="3.2"/>
+  <path class="mark" d="M13.59 9.45 A8 8 0 0 1 13.59 22.55"/>
+  <path class="mark" d="M16.46 5.35 A13 13 0 0 1 16.46 26.65"/>
+</svg>
