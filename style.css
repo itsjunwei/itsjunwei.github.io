@@ -3,8 +3,39 @@
    Hand-written CSS. Mobile-first. No build step, no dependencies.
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   IBM Plex Sans, self-hosted. SIL Open Font License 1.1.
+
+   Two files, both variable across the 100–700 weight axis and subset to
+   latin, so a single file covers every weight the page uses. Self-hosted
+   rather than linked from a font CDN: the page makes no third-party
+   requests, and nothing here depends on a service staying up.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("fonts/ibm-plex-sans-latin.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("fonts/ibm-plex-sans-latin-italic.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
-  --measure: 70ch;
+  /* ~73 characters per line, measured rather than assumed.
+
+     Note ch is the advance of "0", not of an average character — in IBM Plex
+     Sans the average glyph is 0.74ch, so the two are not interchangeable.
+     The previous 70ch was letting lines run to ~98 characters, well past the
+     45–75 range that reads comfortably. 54ch lands at ~73. */
+  --measure: 54ch;
 
   /* Light scheme (default). Body text contrast on --bg is >= 7:1. */
   --bg:        #fdfdfb;
@@ -15,10 +46,13 @@
   --accent:    #1a4f8a;
   --accent-hi: #103a68;
 
-  --font-body: ui-serif, Charter, "Bitstream Charter", "Iowan Old Style",
-               Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-ui:   ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-               "Helvetica Neue", Arial, sans-serif;
+  /* One family throughout. The two names are kept because the rest of the
+     stylesheet distinguishes running text from interface chrome, and that
+     split is worth preserving even while both resolve to the same face. */
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-ui:   "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

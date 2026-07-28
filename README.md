@@ -9,6 +9,10 @@ step, no npm, no Jekyll, no third-party requests.
 | --- | --- |
 | `index.html` | The entire site. One page. |
 | `style.css` | Screen (light + dark) and print styles. |
+| `fonts/` | IBM Plex Sans, self-hosted. Two `.woff2` files. |
+| `cv.pdf` | Linked as "CV (PDF)". Currently a placeholder — replace it. |
+| `og-image.png` | 1200×630 social card, referenced by `og:image`. |
+| `og-image.svg` | Editable source for the card. Not referenced by the page. |
 | `favicon.svg` | SVG favicon, adapts to light/dark. |
 | `robots.txt` | Allows all crawlers, points to the sitemap. |
 | `sitemap.xml` | Single-URL sitemap. Update `<lastmod>` when you edit the page. |
@@ -17,6 +21,59 @@ step, no npm, no Jekyll, no third-party requests.
 
 Nothing is minified and nothing needs to be. Edit the files directly and
 push; there is no pipeline between the source and what visitors see.
+
+Page weight is about 96 KB: 27 KB of markup, styles and favicon, plus 68 KB
+of fonts. Images are excluded from that figure.
+
+## Typeface
+
+The site is set in **IBM Plex Sans**, under the
+[SIL Open Font License 1.1](https://openfontlicense.org/). It is served from
+`fonts/`, not from a font CDN, so the page still makes zero third-party
+requests and does not break if an external service goes away.
+
+Two files, both variable across the 100–700 weight axis and subset to Latin,
+so one file covers every weight the page uses:
+
+| File | Size |
+| --- | --- |
+| `fonts/ibm-plex-sans-latin.woff2` | 44.6 KB |
+| `fonts/ibm-plex-sans-latin-italic.woff2` | 23.8 KB |
+
+The roman file is preloaded in `<head>`, which needs the `crossorigin`
+attribute even though the file is same-origin — fonts are always fetched in
+CORS mode, and without it the browser downloads the file twice.
+
+Two things to know before changing this:
+
+- **`ch` is not "characters".** `--measure` is in `ch`, which is the width of
+  a `0`, and in IBM Plex Sans the average glyph is only 0.74 of that. The
+  measure is set to `54ch` because that lands at roughly 73 characters per
+  line. If you swap the typeface, re-measure rather than keeping the number.
+- **Two font files is the budget.** Adding a second family, or a separate
+  bold file, pushes the page past 100 KB.
+
+To replace the typeface entirely: drop new `.woff2` files into `fonts/`,
+update the two `@font-face` blocks and the `--font-body` / `--font-ui`
+custom properties at the top of `style.css`, update the preload `<link>` in
+`index.html`, and re-check `--measure`.
+
+## Regenerating the social card
+
+`og-image.svg` is the source; `og-image.png` is what the page actually
+references. After editing the SVG, serve the directory and screenshot it:
+
+```bash
+chrome --headless=new --window-size=1200,630 --force-device-scale-factor=1 --screenshot=og-image.png http://localhost:8000/og-image.svg
+```
+
+It has to be served over HTTP. Opened as a `file://` URL, the card's
+`@font-face` is blocked by CORS and the PNG comes out in a system font
+instead of IBM Plex Sans, with no error.
+
+Social scrapers cache aggressively, so after changing the card re-run the
+live URL through the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/)
+to force a refetch.
 
 ## Deploying to GitHub Pages
 
