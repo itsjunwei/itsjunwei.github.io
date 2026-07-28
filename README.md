@@ -304,7 +304,6 @@ prevent.
 | --- | --- |
 | Contact links | `<ul class="contact">` near the top |
 | Research summary or thesis title | `<section id="research">` |
-| Selected results | `<ul class="results">` |
 | Teaching, education, experience | the matching `<section>`, in `<ul class="dated">` |
 | Page title / search snippet | `<title>` and `<meta name="description">` in `<head>` |
 
@@ -320,11 +319,10 @@ A `<ul class="dated">` row looks like this — `detail` is optional:
 
 ## Hidden sections
 
-Four blocks are commented out in `index.html` rather than deleted:
+Three blocks are commented out in `index.html` rather than deleted:
 
 - Preprints and technical reports
 - In preparation
-- Selected results
 - Other experience (ICASSP 2024 demo, industry internships)
 
 Each is wrapped in a clearly labelled `<!-- HIDDEN … -->` comment that tells
@@ -335,8 +333,14 @@ section should appear in the navigation.
 Two consequences worth knowing. Commented-out markup still ships to the
 browser — it is invisible and unindexed, but anyone reading View Source can
 see it, so do not hide anything there that is actually confidential. And the
-CSS for those sections (`.results`, `.status-report`) is still in
-`style.css`, deliberately, so the sections render correctly when restored.
+CSS for those sections (`.status-report`) is still in `style.css`,
+deliberately, so the sections render correctly when restored.
+
+A "Selected results" section existed briefly between Research and
+Publications but was removed outright (not hidden) at the author's request,
+along with its `.results` CSS. It is not recoverable from a comment the way
+the sections above are — restoring it means re-adding the markup from git
+history (`git log -- index.html`) if it's ever wanted back.
 
 ## Still to fill in
 

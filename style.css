@@ -318,15 +318,8 @@ p { margin: 0 0 1rem; }
 .status-pending { color: var(--fg); }
 
 /* --------------------------------------------------------------------------
-   Result and dated lists
+   Dated lists
    -------------------------------------------------------------------------- */
-
-.results {
-  margin: 0;
-  padding-left: 1.2rem;
-}
-
-.results li { margin-bottom: 0.6rem; }
 
 .dated {
   list-style: none;
@@ -489,8 +482,7 @@ footer p { margin: 0 0 0.4rem; }
   }
 
   .pubs > li,
-  .dated > li,
-  .results li {
+  .dated > li {
     break-inside: avoid;
     page-break-inside: avoid;
   }
