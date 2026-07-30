@@ -54,26 +54,31 @@ custom properties at the top of `style.css`, update the preload `<link>` in
 
 ## Page width
 
-Two custom properties, both at the top of `style.css`:
+One custom property at the top of `style.css`:
 
 | | Value | What uses it |
 | --- | --- | --- |
-| `--measure` | `54rem` (864 px) | The page container: headings, rules, publication entries, dated lists |
-| `--measure-prose` | `42rem` (672 px) | Running text: the standfirst and any `<p>` that is a direct child of a `<section>` |
+| `--measure` | `54rem` (864 px) | Everything — headings, rules, prose, publication entries, dated lists |
 
-The split exists because the page holds two kinds of content. The
-publication list and the dated lists are records to be scanned, and width
-there buys fewer wrapped lines — at the old narrow measure, titles ran to
-four lines each. Prose is different, and is capped at roughly 84 characters.
+Every block shares one left and right edge. Nothing on the page is held
+narrower than the container, so sections span their full width and the rule
+under each heading lines up with the content beneath it.
 
-Both are in `rem`, deliberately. An earlier version used `ch`, which is the
+It is in `rem`, deliberately. An earlier version used `ch`, which is the
 advance of a `0` — in IBM Plex Sans the average glyph is only 0.74 of that,
 so `70ch` was quietly producing ~98-character lines. `rem` is font-independent
 and means what it says for a layout dimension.
 
-Anything you add that is meant to be *read* rather than scanned should get
-`max-width: var(--measure-prose)`. Note the print stylesheet resets both to
-`none`, since paper sets its own width via `@page`.
+**A known trade.** 864 px puts running text near 108 characters per line,
+past the 45–75 usually recommended for prose. This is intentional: the page
+is mostly a publication list, and a container narrow enough to suit the one
+research paragraph made every entry title wrap to three or four lines. A
+previous revision capped prose separately at `42rem`; it read as the Research
+section failing to span the page, and was removed. If you ever want it back,
+put `max-width` on those paragraphs rather than narrowing `--measure`.
+
+The print stylesheet resets `--measure` to `none`, since paper sets its own
+width via `@page`.
 
 ## Regenerating the social card
 
