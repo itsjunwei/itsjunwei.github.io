@@ -44,19 +44,36 @@ The roman file is preloaded in `<head>`, which needs the `crossorigin`
 attribute even though the file is same-origin — fonts are always fetched in
 CORS mode, and without it the browser downloads the file twice.
 
-Two things to know before changing this:
-
-- **`ch` is not "characters".** `--measure` is in `ch`, which is the width of
-  a `0`, and in IBM Plex Sans the average glyph is only 0.74 of that. The
-  measure is set to `54ch` because that lands at roughly 73 characters per
-  line. If you swap the typeface, re-measure rather than keeping the number.
-- **Two font files is the budget.** Adding a second family, or a separate
-  bold file, pushes the page past 100 KB.
+**Two font files is the budget.** Adding a second family, or a separate bold
+file, pushes the page past 100 KB.
 
 To replace the typeface entirely: drop new `.woff2` files into `fonts/`,
 update the two `@font-face` blocks and the `--font-body` / `--font-ui`
 custom properties at the top of `style.css`, update the preload `<link>` in
-`index.html`, and re-check `--measure`.
+`index.html`, and re-check the widths below.
+
+## Page width
+
+Two custom properties, both at the top of `style.css`:
+
+| | Value | What uses it |
+| --- | --- | --- |
+| `--measure` | `54rem` (864 px) | The page container: headings, rules, publication entries, dated lists |
+| `--measure-prose` | `42rem` (672 px) | Running text: the standfirst and any `<p>` that is a direct child of a `<section>` |
+
+The split exists because the page holds two kinds of content. The
+publication list and the dated lists are records to be scanned, and width
+there buys fewer wrapped lines — at the old narrow measure, titles ran to
+four lines each. Prose is different, and is capped at roughly 84 characters.
+
+Both are in `rem`, deliberately. An earlier version used `ch`, which is the
+advance of a `0` — in IBM Plex Sans the average glyph is only 0.74 of that,
+so `70ch` was quietly producing ~98-character lines. `rem` is font-independent
+and means what it says for a layout dimension.
+
+Anything you add that is meant to be *read* rather than scanned should get
+`max-width: var(--measure-prose)`. Note the print stylesheet resets both to
+`none`, since paper sets its own width via `@page`.
 
 ## Regenerating the social card
 

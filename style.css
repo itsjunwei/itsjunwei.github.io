@@ -29,13 +29,22 @@
 }
 
 :root {
-  /* ~73 characters per line, measured rather than assumed.
+  /* Two widths, because the page holds two kinds of content.
 
-     Note ch is the advance of "0", not of an average character — in IBM Plex
-     Sans the average glyph is 0.74ch, so the two are not interchangeable.
-     The previous 70ch was letting lines run to ~98 characters, well past the
-     45–75 range that reads comfortably. 54ch lands at ~73. */
-  --measure: 54ch;
+     --measure is the page container: headings, rules, the publication list
+     and the dated lists all span it. These are records to be scanned, not
+     read straight through, so extra width buys fewer wrapped lines rather
+     than a harder read. It is set in rem because it is a layout dimension;
+     ch is the advance of "0" and shifts with the typeface, which makes it a
+     poor unit for one.
+
+     --measure-prose caps running text inside that container, at roughly 84
+     characters. That is past the 45–75 rule of thumb, which is calibrated
+     for sustained reading; the longest paragraph here is five lines, and
+     holding it much tighter than the container leaves an obvious notch of
+     white down the right-hand side. */
+  --measure:       54rem;
+  --measure-prose: 42rem;
 
   /* Light scheme (default). Body text contrast on --bg is >= 7:1. */
   --bg:        #fdfdfb;
@@ -235,6 +244,20 @@ h3:first-of-type { margin-top: 1.5rem; }
 
 p { margin: 0 0 1rem; }
 
+/* Running prose is held to the narrower measure while everything around it
+   uses the full container. Selecting on direct children of a section keeps
+   this to actual paragraphs — the publication and dated lists sit inside
+   <li> and are untouched.
+
+   The standfirst is included so that everything meant to be read shares one
+   right-hand edge. Left out, it ran to ~104 characters against the
+   paragraphs' 84, which put three different edges on the page instead of
+   two. */
+.standfirst,
+main section > p {
+  max-width: var(--measure-prose);
+}
+
 .note {
   color: var(--fg-muted);
   font-size: 0.9375rem;
@@ -370,10 +393,10 @@ footer p { margin: 0 0 0.4rem; }
 @media (min-width: 40em) {
   body {
     padding: 3.5rem 2rem 5rem;
-    font-size: 1.09375rem;
+    font-size: 1.125rem;
   }
 
-  h1 { font-size: 2.3rem; }
+  h1 { font-size: 2.5rem; }
 
   main section { margin-top: 3.5rem; }
 }
@@ -423,7 +446,14 @@ footer p { margin: 0 0 0.4rem; }
     max-width: none;
   }
 
-  body > * { max-width: none; }
+  /* Both measures go: paper sets its own width via @page, and leaving the
+     prose cap in place would print paragraphs in a narrow strip beside
+     full-width publication entries. */
+  body > *,
+  .standfirst,
+  main section > p {
+    max-width: none;
+  }
 
   /* Screen-only furniture. Notes stay: they carry content, not decoration. */
   nav,
