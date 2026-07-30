@@ -10,7 +10,7 @@ step, no npm, no Jekyll, no third-party requests.
 | `index.html` | The entire site. One page. |
 | `style.css` | Screen (light + dark) and print styles. |
 | `fonts/` | IBM Plex Sans, self-hosted. Two `.woff2` files. |
-| `cv.pdf` | Linked as "CV (PDF)". Currently a placeholder — replace it. |
+| `cv.pdf` | Linked as "CV (PDF)". To update, overwrite this file — keep the name. |
 | `og-image.png` | 1200×630 social card, referenced by `og:image`. |
 | `og-image.svg` | Editable source for the card. Not referenced by the page. |
 | `favicon.svg` | SVG favicon, adapts to light/dark. |
@@ -350,8 +350,19 @@ history (`git log -- index.html`) if it's ever wanted back.
 - **MAGENTA has no DOI yet.** It is marked `[TO UPDATE]` in the file. When
   the DOI is issued: delete the status label, link the title, update the
   venue line, and add a `citation_*` block in `<head>`.
+- **The AES entry has no link.** It is marked `[NEEDS URL]`; the AES
+  E-Library record ID could not be determined.
 
 No `UNCONFIRMED` markers remain.
+
+## Link paths
+
+Every asset reference in `index.html` is **relative** (`cv.pdf`,
+`style.css`, `fonts/…`, `og-image.png`), never root-relative (`/cv.pdf`).
+Keep it that way. A root-relative path works on the deployed site but
+resolves to the filesystem root when you open `index.html` directly from
+disk, so the link silently dies in local preview — which is exactly how the
+CV link broke once already.
 
 ## Before you push — a 60-second check
 
